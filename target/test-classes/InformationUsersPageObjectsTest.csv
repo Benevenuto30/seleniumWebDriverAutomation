@@ -1,0 +1,6 @@
+testAddAdditionalUserInformation,login,password,type,contact,expectedMessage,Duration(ms)
+"",julio0001,123456,Phone,+5531999998888,Your contact has been added!,2110.0
+testLoginSuccess,login,password,Duration(ms)
+"",julio0001,123456,1024.0
+testLoginFailedWithoutPassword,login,Duration(ms)
+"",julio0001,604.0
