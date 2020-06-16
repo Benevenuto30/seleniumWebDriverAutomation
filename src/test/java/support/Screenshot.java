@@ -13,7 +13,7 @@ public class Screenshot {
 		try{
 		FileUtils.copyFile(screenshot, new File(file));
 	}catch (Exception e){
-			System.out.println("Houveram problemas para copiar o arquivo: " + e.getMessage());
+			System.out.println("We have problems to copy file: " + e.getMessage());
 		}
 	}
 }

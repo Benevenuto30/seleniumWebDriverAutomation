@@ -1,0 +1,13 @@
+pages/MePage.class
+tests/loginPageObjectsTest.class
+pages/AddContactPage.class
+pages/BasePage.class
+tests/InformationUsersPageObjectsTest.class
+support/Screenshot.class
+pages/MyTasks.class
+pages/AddTask.class
+pages/LoginFormPage.class
+support/Web.class
+support/Generate.class
+pages/LoginPage.class
+pages/SecretPage.class

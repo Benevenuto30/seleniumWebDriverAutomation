@@ -18,7 +18,8 @@ public class LoginFormPage extends BasePage{
 		return this;
 	}
 	public SecretPage clickSignIn (){
-		driver.findElement(By.linkText("SIGN IN")).click();
+		//driver.findElement(By.linkText("SIGN IN")).click();
+		driver.findElement(By.xpath("//*[@id=\"signinbox\"]/div[2]/a")).click();
 		return new SecretPage(driver);
 	}
 	public SecretPage makeLogin(String email, String password){

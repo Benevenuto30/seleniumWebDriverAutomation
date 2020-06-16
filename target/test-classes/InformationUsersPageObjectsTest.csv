@@ -1,6 +1,13 @@
 testAddAdditionalUserInformation,login,password,type,contact,expectedMessage,Duration(ms)
-"",julio0001,123456,Phone,+5531999998888,Your contact has been added!,2110.0
+"",rafael0001,123456,Phone,+5531999998888,Your contact has been added!,2544.0
+"",rafael0001,123456,E-mail,rafael@test.com,Your contact has been added!,2391.0
 testLoginSuccess,login,password,Duration(ms)
-"",julio0001,123456,1024.0
+"",rafael0001,123456,1959.0
 testLoginFailedWithoutPassword,login,Duration(ms)
-"",julio0001,604.0
+"",rafael0001,1350.0
+testCreateTask,login,password
+"",rafael0001,123456
+testRemovePhoneUserInformation,login,password,expectedMessage,Duration(ms)
+"",rafael0001,123456,"Rest in peace, dear phone!",2333.0
+testRemoveEmailUserInformation,login,password,expectedMessage,Duration(ms)
+"",rafael0001,123456,"Rest in peace, dear email!",2248.0

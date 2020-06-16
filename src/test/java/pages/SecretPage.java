@@ -13,4 +13,9 @@ public class SecretPage extends BasePage{
 		driver.findElement(By.className("me")).click();
 		return new MePage(driver);
 	}
+	public MyTasks clickMyTasks(){
+		//driver.findElement(By.xpath("/html/body/div[2]/div/div/p[2]/a"));
+		driver.findElement(By.linkText("My tasks")).click();
+		return new MyTasks(driver);
+	}
 }

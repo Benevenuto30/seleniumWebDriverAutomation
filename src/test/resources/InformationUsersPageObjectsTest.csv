@@ -1,8 +1,18 @@
 testAddAdditionalUserInformation,login,password,type,contact,expectedMessage
-                                 ,julio0001,123456,Phone,+5531999998888,Your contact has been added!
+                                 ,rafael0001,123456,Phone,+5531999998888,Your contact has been added!
+                                 ,rafael0001,123456,E-mail,rafael@test.com,Your contact has been added!
 
 testLoginSuccess,login,password
-                ,julio0001,123456
+                ,rafael0001,123456
 
 testLoginFailedWithoutPassword,login
-                        ,julio0001
+                              ,rafael0001
+
+testCreateTask,login,password
+              ,rafael0001,123456
+
+testRemovePhoneUserInformation,login,password,expectedMessage
+                              ,rafael0001,123456,"Rest in peace, dear phone!"
+
+testRemoveEmailUserInformation,login,password,expectedMessage
+                              ,rafael0001,123456,"Rest in peace, dear email!"

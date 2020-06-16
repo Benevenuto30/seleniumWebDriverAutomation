@@ -5,13 +5,14 @@ import org.easetech.easytest.annotation.Param;
 import org.easetech.easytest.runner.DataDrivenTestRunner;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pages.LoginPage;
-import pages.SecretPage;
+import support.Generate;
+import support.Screenshot;
 import support.Web;
 @RunWith(DataDrivenTestRunner.class)
 @DataLoader(filePaths = "InformationUsersPageObjectsTest.csv")
@@ -19,29 +20,12 @@ public class InformationUsersPageObjectsTest {
 
 	private WebDriver driver;
 
+	@Rule
+	public TestName test = new TestName();
+
 	@Before
 	public void setUp(){
 		driver = Web.createChrome();
-	}
-
-	@Test
-	public void testLoginSuccess (@Param(name="login")String login,
-							  @Param(name="password")String password)
-	{
-		String textMe  = new LoginPage(driver)
-				.clickSignIn()
-				.makeLogin(login,password)
-				.captureTextMe();
-		assertEquals("Hi, Julio",textMe);
-	}
-	@Test
-	public void testLoginFailedWithoutPassword(@Param(name="login")String login){
-		String textToastWithoutPassword = new LoginPage(driver)
-				.clickSignIn()
-				.makeLogin(login,"")
-				.captureMessageToastWithoutPassword();
-
-		assertEquals("Maybe you brain dropped the password or login in some place!",textToastWithoutPassword );
 	}
 
 	@Test
@@ -61,8 +45,56 @@ public class InformationUsersPageObjectsTest {
 				.addContact(type,contact)
 				.captureMessageToast();
 		assertEquals(expectedMessage,textToast);
+		Screenshot.take(driver,"/Users/larafael.benevenuto/desktop/seleniumAutomation/screenshot/"
+				+ Generate.dateTimeForFile()+test.getMethodName()+".png");
+	}
+
+	@Test
+	public void testRemovePhoneUserInformation(@Param(name="login")String login,
+											   @Param(name="password")String password,
+											   @Param(name="expectedMessage")String expectedMessage){
+		String textToast = new LoginPage(driver)
+				.clickSignIn()
+				.makeLogin(login,password)
+				.clickOnMe()
+				.clickTabMoreDataAboutYou()
+				.removePhone()
+				.captureMessageToast();
+		assertEquals(expectedMessage,textToast);
+		Screenshot.take(driver,"/Users/larafael.benevenuto/desktop/seleniumAutomation/screenshot/"
+				+ Generate.dateTimeForFile()+test.getMethodName()+".png");
+
 
 	}
+
+	@Test
+	public void testRemoveEmailUserInformation(@Param(name="login")String login,
+											   @Param(name="password")String password,
+											   @Param(name="expectedMessage")String expectedMessage){
+		String textToast = new LoginPage(driver)
+				.clickSignIn()
+				.makeLogin(login,password)
+				.clickOnMe()
+				.clickTabMoreDataAboutYou()
+				.removeEmail()
+				.captureMessageToast();
+		assertEquals(expectedMessage,textToast);
+		Screenshot.take(driver,"/Users/larafael.benevenuto/desktop/seleniumAutomation/screenshot/"
+				+ Generate.dateTimeForFile()+test.getMethodName()+".png");
+
+
+	}
+//	@Test
+//	public void testCreateTask(@Param(name="login")String login,
+//							   @Param(name="password")String password){
+//		new LoginPage(driver)
+//				.clickSignIn()
+//				.makeLogin(login,password)
+//				.clickMyTasks()
+//				.clickAddATask()
+//				.fillDateLimit();
+//
+//	}
 
 	@After
 	public void tearDown(){
